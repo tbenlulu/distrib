@@ -15,9 +15,9 @@ pipeline {
         )
       }
     }
-    stage('setup') {
+    stage('copy') {
       steps {
-        sh './distrib.sh setup'
+        sh './distrib.sh copy'
       }
     }
   }
