@@ -1,23 +1,19 @@
 pipeline {
-  agent any
-  stages {
-    stage('Build') {
-      steps {
-        parallel(
-          "Build": {
-            sh './distrib.sh build'
-            
-          },
-          "test_connection": {
-            sh './distrib.sh test_connection'
-            
-          }
-        )
-      }
+  agent {
+    node {
+      label 'jenkins-slave-basic'
     }
-    stage('copy') {
+    
+  }
+  stages {
+    stage('') {
       steps {
-        sh './distrib.sh copy'
+        sh 'Echo "hello"'
+        sh '''hostname
+'''
+        sh 'whoami'
+        sh '''sleep 15
+'''
       }
     }
   }
