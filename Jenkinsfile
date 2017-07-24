@@ -6,14 +6,18 @@ pipeline {
     
   }
   stages {
-    stage('') {
+    stage('Build') {
       steps {
-        sh 'Echo "hello"'
-        sh '''hostname
-'''
-        sh 'whoami'
-        sh '''sleep 15
-'''
+        parallel(
+          "Build": {
+            sh './distrib.sh build'
+            
+          },
+          "test_connection": {
+            sh './distrib.sh test_connection'
+            
+          }
+        )
       }
     }
   }
