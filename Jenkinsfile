@@ -11,6 +11,10 @@ pipeline {
         parallel(
           "Build": {
             sh './distrib.sh build'
+            sh 'echo "hello"'
+            sh 'hostname'
+            sh 'whoami'
+            sh 'sleep 15'
             
           },
           "test_connection": {
