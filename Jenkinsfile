@@ -3,6 +3,7 @@ pipeline {
     node {
       label 'docker-slave'
     }
+    
   }
   stages {
     stage('Build') {
@@ -14,9 +15,11 @@ pipeline {
             sh 'hostname'
             sh 'whoami'
             sh 'sleep 15'
+            
           },
           "test_connection": {
             sh './distrib.sh test_connection'
+            
           }
         )
       }
